@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "548d39fd-dd0f-43bb-965b-377d161c19de",
+		"name": "Dummy API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.groupkt.com/post/c9b0ccb9/country-and-other-related-rest-webservices.htm",
+					"protocol": "http",
+					"host": [
+						"www",
+						"groupkt",
+						"com"
+					],
+					"path": [
+						"post",
+						"c9b0ccb9",
+						"country-and-other-related-rest-webservices.htm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JavaScript",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.reddit.com/r/javascript.json?utm_source=reddit&utm_medium=usertext&utm_name=javascript&utm_content=t1_drb3cdb",
+					"protocol": "https",
+					"host": [
+						"www",
+						"reddit",
+						"com"
+					],
+					"path": [
+						"r",
+						"javascript.json"
+					],
+					"query": [
+						{
+							"key": "utm_source",
+							"value": "reddit"
+						},
+						{
+							"key": "utm_medium",
+							"value": "usertext"
+						},
+						{
+							"key": "utm_name",
+							"value": "javascript"
+						},
+						{
+							"key": "utm_content",
+							"value": "t1_drb3cdb"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JsonTest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://echo.jsontest.com/insert-key-here/insert-value-here/key/value",
+					"protocol": "http",
+					"host": [
+						"echo",
+						"jsontest",
+						"com"
+					],
+					"path": [
+						"insert-key-here",
+						"insert-value-here",
+						"key",
+						"value"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Date JsonTest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidateJsontest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://validate.jsontest.com/?json=%5BJSON-code-to-validate%5D",
+					"protocol": "http",
+					"host": [
+						"validate",
+						"jsontest",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "json",
+							"value": "%5BJSON-code-to-validate%5D"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "breeds list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//add assertion\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//multiple assertion\r",
+							"pm.test(\"validate multiple fields\", function () {\r",
+							"    responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.message.australian[0]).to.eql(\"shepherd\");\r",
+							"    pm.expect(responseJson.message.buhund[0]).to.eql(\"norwegian\");\r",
+							"    pm.expect(responseJson.message.cattledog[0]).to.eql(\"australian\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"//Handling respose that donot parse\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"australian\");\r",
+							"});\r",
+							"\r",
+							"//status code being one of a set\r",
+							"pm.test(\"Successful status code\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"\r",
+							"//Testing headers\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"//testing content of header\r",
+							"\r",
+							"pm.test(\"Content-Type value\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"//Check cookies presernt or not\r",
+							"pm.test(\"Cookies is present\", function () {\r",
+							"    pm.expect(pm.cookies.has(\"__cfduid\")).to.be.true;\r",
+							"});\r",
+							"\r",
+							"//verify values of cookies\r",
+							"pm.test(\"Cookies value check\", function () {\r",
+							"    pm.expect(pm.cookies.get(\"__cfduid\")).to.eql(\"df392ec4268842a74251ecebd16a110131614591000\");\r",
+							"    });\r",
+							"\r",
+							"    //Response time\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dog.ceo/api/breeds/list/all",
+					"protocol": "https",
+					"host": [
+						"dog",
+						"ceo"
+					],
+					"path": [
+						"api",
+						"breeds",
+						"list",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ip test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ip.jsontest.com/",
+					"protocol": "http",
+					"host": [
+						"ip",
+						"jsontest",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

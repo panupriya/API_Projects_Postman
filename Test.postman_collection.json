@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "fc9285b4-d1df-4048-82ed-692cab471078",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Weather",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"//var expectedcity = pm.collectionVariables.get(\"city\");\r",
+							"//pm.environment.set(\"expectedcity\",expectedcity);\r",
+							"\r",
+							"// Get value of expected city from the file\r",
+							"// Create expectedCity as env. variable \r",
+							"// in Test tab call expected city of \r",
+							"\r",
+							"//from exteranal file\r",
+							"pm.environment.set(\"expectedcity\", data.city);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Veriy API ran successfully\",function () \r",
+							"{\r",
+							"   \r",
+							"    pm.response.to.have.status(200);\r",
+							"     //console.log(pm.response)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"verify city or country name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    //console.log(jsonData)\r",
+							"     //console.log(jsonData.name)\r",
+							"     var actual = jsonData.name;\r",
+							"     \r",
+							"     var expectedcity = pm.environment.get(\"expectedcity\");\r",
+							"     pm.expect(actual).to.eql(expectedcity);\r",
+							"    //var expect = pm.environment.get(\"expectedcity\");\r",
+							"     //pm.expect(jsonData.name).to.eql(expect);\r",
+							"     \r",
+							"      // pm.expect(jsonData.sys.country).to.eql(\"GB\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-RapidAPI-Host",
+						"value": "community-open-weather-map.p.rapidapi.com",
+						"type": "text"
+					},
+					{
+						"key": "X-RapidAPI-Key",
+						"value": "{{rapid_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/weather?q={{expectedcity}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{expectedcity}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weather Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"//var expectedcity = pm.collectionVariables.get(\"city\");\r",
+							"//pm.environment.set(\"expectedcity\",expectedcity);\r",
+							"\r",
+							"// Get value of expected city from the file\r",
+							"// Create expectedCity as env. variable \r",
+							"// in Test tab call expected city of \r",
+							"\r",
+							"//from exteranal file\r",
+							"pm.environment.set(\"expectedcity\", data.city);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Veriy API ran successfully\",function () \r",
+							"{\r",
+							"   \r",
+							"    pm.response.to.have.status(200);\r",
+							"     //console.log(pm.response)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"verify city or country name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    //console.log(jsonData)\r",
+							"     //console.log(jsonData.name)\r",
+							"     var actual = jsonData.name;\r",
+							"     \r",
+							"     var expectedcity = pm.environment.get(\"expectedcity\");\r",
+							"     pm.expect(actual).to.eql(expectedcity);\r",
+							"    //var expect = pm.environment.get(\"expectedcity\");\r",
+							"     //pm.expect(jsonData.name).to.eql(expect);\r",
+							"     \r",
+							"      // pm.expect(jsonData.sys.country).to.eql(\"GB\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-RapidAPI-Host",
+						"value": "community-open-weather-map.p.rapidapi.com",
+						"type": "text"
+					},
+					{
+						"key": "X-RapidAPI-Key",
+						"value": "{{rapid_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/weather?q={{expectedcity}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{expectedcity}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Youtube",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Covid Cases",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Country weather",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//from exteranal file\r",
+							"pm.environment.set(\"expectedcountry\", data.country);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Varify Country Weather\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var actual = jsonData.name;\r",
+							"     \r",
+							"    var expectedcountry =\r",
+							"        pm.environment.get(\"expectedcountry\");\r",
+							"     pm.expect(actual).to.eql(expectedcountry);\r",
+							"    \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-RapidAPI-Host",
+						"value": "community-open-weather-map.p.rapidapi.com",
+						"type": "text"
+					},
+					{
+						"key": "X-RapidAPI-Key",
+						"value": "{{rapid_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/weather?q={{expectedcountry}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{expectedcountry}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "city",
+			"value": "London"
+		},
+		{
+			"key": "city1",
+			"value": "Brisbane"
+		},
+		{
+			"key": "city3",
+			"value": "Queenstown"
+		},
+		{
+			"key": "city4",
+			"value": "Newdelhi"
+		}
+	]
+}

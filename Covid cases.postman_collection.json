@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "ad704509-544e-4555-a77a-50cf19daaed0",
+		"name": "Covid cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Contry Covid Cases",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Country covid cases\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify covid cases in different countries\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var actual = jsonData.Country_text;\r",
+							"\r",
+							"    var expectedCountry =\r",
+							"        pm.environment.get(\"expectedCountry\");\r",
+							"    \r",
+							"    pm.expect(actual).to.eql(expectedCountry);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"     \r",
+							"     \r",
+							"     "
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//var expectedCountry = pm.collectionVariables.get(\"country\");\r",
+							"//pm.environment.set(\"expectedCountry\",expectedCountry );\r",
+							"pm.environment.set(\"expectedCountry\", data.country);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-rapidapi-host",
+						"value": "covid-19-tracking.p.rapidapi.com",
+						"type": "text"
+					},
+					{
+						"key": "x-rapidapi-key",
+						"value": "7871e3f177msh44d1cf54c86f9e0p1d5a0djsn31ed8c57dfc8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/v1/{{expectedCountry}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"{{expectedCountry}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
